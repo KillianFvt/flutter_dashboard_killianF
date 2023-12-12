@@ -73,7 +73,7 @@ class BHButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 1.0),
+              padding: const EdgeInsets.symmetric(horizontal: 3.0),
               child: Icon(
                 icon,
                 color: Colors.white,

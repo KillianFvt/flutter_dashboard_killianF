@@ -22,8 +22,7 @@ class _CircularProgressDashboardState extends State<CircularProgressDashboard> w
     if (_controller.isCompleted) {
       // 1s delay before repeating
       Future.delayed(const Duration(seconds: 1), () {
-        _controller.reverse();
-        _controller.forward();
+        _controller.repeat(reverse: true);
       });
     }
   })..forward();
