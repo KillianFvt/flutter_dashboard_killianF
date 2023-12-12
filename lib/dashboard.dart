@@ -1,6 +1,10 @@
+import 'package:dashboard_fauvette_killian/midl_page/midl.dart';
 import 'package:dashboard_fauvette_killian/widgets/heart_beat.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:dashboard_fauvette_killian/widgets/circular_progress_dashboard.dart';
+
+import 'constants.dart';
 
 class DashboardTwoPage extends StatelessWidget {
   final TextStyle whiteText = const TextStyle(color: Colors.white);
@@ -13,7 +17,29 @@ class DashboardTwoPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text("Dashboard"),
+
+        // gradient text
+        title: ShaderMask(
+          shaderCallback: (bounds) => LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: <Color>[
+              colorBlue,
+              colorGreen,
+            ],
+          ).createShader(bounds),
+
+          child: const Text(
+            'Dashboard',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontFamily: 'Ethnocentric',
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+
         centerTitle: true,
       ),
       body: _buildBody(context),
@@ -26,7 +52,7 @@ class DashboardTwoPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _buildHeader(username:"Killian"),
-          const SizedBox(height: 50.0),
+          const SizedBox(height: 25.0),
           Row(
             children: <Widget>[
               Expanded(
@@ -34,22 +60,20 @@ class DashboardTwoPage extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       height: 190,
-                      color: Colors.blue,
+                      color: munsell,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          ListTile(
+                          const ListTile(
                             title: Text(
                               "9,850",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineMedium
-                                  ?.copyWith(
+                              style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 24.0,
+                                fontSize: 20.0,
+                                fontFamily: 'Ethnocentric',
                               ),
                             ),
-                            trailing: const Icon(
+                            trailing: Icon(
                               FontAwesomeIcons.personWalking,
                               color: Colors.white,
                             ),
@@ -67,22 +91,20 @@ class DashboardTwoPage extends StatelessWidget {
                     const SizedBox(height: 10.0),
                     Container(
                       height: 120,
-                      color: Colors.green,
+                      color: emerald,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          ListTile(
+                          const ListTile(
                             title: Text(
-                              "70 bpm",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineMedium
-                                  ?.copyWith(
+                              "75 bpm",
+                              style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 24.0,
+                                fontSize: 20.0,
+                                fontFamily: 'Ethnocentric',
                               ),
                             ),
-                            trailing: const HeartBeat(),
+                            trailing: HeartBeat(),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 16.0),
@@ -103,22 +125,21 @@ class DashboardTwoPage extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       height: 120,
-                      color: Colors.red,
+                      color: tomato,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          ListTile(
+                          const ListTile(
                             title: Text(
                               "2,430",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineMedium
-                                  ?.copyWith(
+                              style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 24.0,
+                                fontSize: 20.0,
+                                fontFamily: 'Ethnocentric',
                               ),
                             ),
-                            trailing: const Icon(
+
+                            trailing: Icon(
                               FontAwesomeIcons.fire,
                               color: Colors.white,
                             ),
@@ -136,30 +157,31 @@ class DashboardTwoPage extends StatelessWidget {
                     const SizedBox(height: 10.0),
                     Container(
                       height: 190,
-                      color: Colors.yellow,
+                      color: purpureus,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           ListTile(
-                            title: Text(
+                            title: const Text(
                               "15 kms",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineMedium
-                                  ?.copyWith(
-                                fontSize: 24.0,
-                                color: Colors.black,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontFamily: 'Ethnocentric',
                               ),
                             ),
-                            trailing: const Icon(
+                            trailing: Icon(
                               FontAwesomeIcons.road,
-                              color: Colors.black,
+                              color: ghostWhite,
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 16.0),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16.0),
                             child: Text(
                               'Distance',
+                              style: TextStyle(
+                                color: ghostWhite,
+                              )
                             ),
                           )
                         ],
@@ -169,6 +191,57 @@ class DashboardTwoPage extends StatelessWidget {
                 ),
               )
             ],
+          ),
+
+          const SizedBox(height: 20.0),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Midl(),
+                  ),
+                );
+              },
+
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(),
+                padding: const EdgeInsets.all(0.0),
+                elevation: 10,
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+              ),
+
+              child: Ink(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: <Color>[
+                        colorBlue,
+                        colorGreen,
+                      ],
+                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(80.0)),
+                ),
+
+                child: Container(
+                  constraints: const BoxConstraints(minWidth: 88.0, minHeight: 36.0), // min sizes for Material buttons
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Go to Midl Page',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                      fontFamily: 'ArialRounded',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           )
         ],
       ),
@@ -193,16 +266,7 @@ class DashboardTwoPage extends StatelessWidget {
 
         Row(
           children: <Widget>[
-            Container(
-              height: 100,
-              width: 100,
-              padding: const EdgeInsets.all(8.0),
-              child: CircularProgressIndicator(
-                value: 0.5,
-                valueColor: const AlwaysStoppedAnimation(Colors.blue),
-                backgroundColor: Colors.grey.shade700,
-              ),
-            ),
+            const CircularProgressDashboard(),
 
             const SizedBox(width: 20.0),
 
@@ -213,11 +277,6 @@ class DashboardTwoPage extends StatelessWidget {
                   Text(
                     "Overall\nDaily Progress",
                     style: whiteText.copyWith(fontSize: 20.0),
-                  ),
-                  const SizedBox(height: 20.0),
-                  const Text(
-                    "45% to go",
-                    style: TextStyle(color: Colors.grey, fontSize: 16.0),
                   ),
                 ],
               ),
