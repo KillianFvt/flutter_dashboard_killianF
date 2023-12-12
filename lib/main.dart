@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:dashboard_fauvette_killian/dashboard.dart';
 import 'package:dashboard_fauvette_killian/midl_page/midl.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ void main() {
   runApp(
       const MyApp(),
   );
+  DartPluginRegistrant.ensureInitialized();
 }
 
 class MyApp extends StatelessWidget {

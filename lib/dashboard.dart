@@ -1,4 +1,5 @@
 import 'package:dashboard_fauvette_killian/midl_page/midl.dart';
+import 'package:dashboard_fauvette_killian/my_shared_pref.dart';
 import 'package:dashboard_fauvette_killian/widgets/heart_beat.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -242,7 +243,56 @@ class DashboardTwoPage extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SharedPreferencesExample(),
+                  ),
+                );
+              },
+
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(),
+                padding: const EdgeInsets.all(0.0),
+                elevation: 10,
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+              ),
+
+              child: Ink(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      Colors.red,
+                      Colors.orange,
+                    ],
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(80.0)),
+                ),
+
+                child: Container(
+                  constraints: const BoxConstraints(minWidth: 88.0, minHeight: 36.0), // min sizes for Material buttons
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Go to Shared Pref Example Page',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                      fontFamily: 'ArialRounded',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
