@@ -41,10 +41,9 @@ class MyApp extends StatelessWidget {
           headlineSmall: TextStyle(
             fontFamily: 'ArialRounded',
           ),
-
         )
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Travail Flutter Killian FAUVETTE'),
     );
   }
 }

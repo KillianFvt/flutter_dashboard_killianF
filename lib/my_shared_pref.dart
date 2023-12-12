@@ -39,21 +39,23 @@ class _SharedPreferencesExampleState extends State<SharedPreferencesExample> {
     TextStyle? textStyle = Theme.of(context).textTheme.headlineLarge;
 
     return Scaffold(
+      backgroundColor: Colors.deepPurple[100],
       appBar: AppBar(
         title: Text(_title, style: textStyle,),
+        backgroundColor: Colors.deepPurple[700],
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 8, right: 8, bottom: 10, top: 300),
         child: Column(
           children: <Widget>[
             _getText(prefEditingController, "Entrer une phrase...", false),
-            const SizedBox(height: 50,),
+            const SizedBox(height: 25,),
             _getText(displayPrefController, "Aucune préférence enregistrée", true)
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.yellow[100],
+        backgroundColor: Colors.yellow[700],
         onPressed: () {
           saveMyPref(pref: prefEditingController.text);
         },
@@ -64,25 +66,28 @@ class _SharedPreferencesExampleState extends State<SharedPreferencesExample> {
   }
 
   Widget _getText(TextEditingController tfController, String placeHolder, bool isReadOnly) {
-    return TextField(
-      controller: tfController,
-      autofocus: false,
-      readOnly: isReadOnly,
-      style: Theme.of(context).textTheme.headlineMedium,
-      decoration: InputDecoration(
-        filled: true,
-        border: InputBorder.none,
-        fillColor: Colors.yellow,
-        hintText: placeHolder,
-        contentPadding:
-        const EdgeInsets.only(left: 8.0, bottom: 2.0, top: 4.0),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.red),
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: const BorderSide(),
-          borderRadius: BorderRadius.circular(25),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: TextField(
+        controller: tfController,
+        autofocus: false,
+        readOnly: isReadOnly,
+        style: Theme.of(context).textTheme.headlineMedium,
+        decoration: InputDecoration(
+          filled: true,
+          border: InputBorder.none,
+          fillColor: Colors.yellow,
+          hintText: placeHolder,
+          contentPadding:
+          const EdgeInsets.only(left: 8.0, bottom: 2.0, top: 4.0),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.yellow.shade700),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: const BorderSide(),
+            borderRadius: BorderRadius.circular(25),
+          ),
         ),
       ),
     );
